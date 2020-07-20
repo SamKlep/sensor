@@ -31,7 +31,7 @@ setInterval(() => {
 const tempertureCanvasCtx =
 document.getElementById('temperature-chart').getContext('2d')
 
-const temperatureChart = new CharacterData(tempertureCanvasCtx,
+const temperatureChart = new Chart(tempertureCanvasCtx,
     {
         type: 'line',
         data: {
