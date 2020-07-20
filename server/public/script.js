@@ -26,7 +26,7 @@ const temperatureChartConfig = {
             }
         }
     }
-    const humidityChart = new Chart(humidityCanvasCtx, humidityChartConfig)
+    const temperatureChart = new Chart(tempertureCanvasCtx, temperatureChartConfig)
 
     const humidityChartConfig = {
         type: 'line',
@@ -58,7 +58,7 @@ const temperatureChartConfig = {
     const pushData = (arr, value, maxLen) => {
         arr.push(value)
         if(arr.length > maxLen) {
-            AuthenticatorAssertionResponse.shift()
+           arr.shift()
         }
     }
 
