@@ -6,11 +6,15 @@ const getCachedSensorReadings = require('./getCachedSensorReadings');
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
 app.get('/temperature', function(req, res) {
-    res.send('<strong>' + getCachedSensorReadings.getTemperature().toFixed(1) + '</strong>' + '°C') 
+    res.send('<strong>' + 
+    getCachedSensorReadings.getTemperature().toFixed(1) + 
+    '</strong>' + '°C') 
     });
 
  app.get('/humidity', function(req, res) {
-    res.send('<strong>' + getCachedSensorReadings.getHumidity().toFixed(1) + '</strong>' + '%') 
+    res.send('<strong>' + 
+    getCachedSensorReadings.getHumidity().toFixed(1) + 
+    '</strong>' + '%') 
     });
 
 app.get('/publlic', function(req, res) {
