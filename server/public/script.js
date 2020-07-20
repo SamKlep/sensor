@@ -26,7 +26,7 @@ const temperatureChartConfig = {
             }
         }
     }
-    const temperatureChart = new Chart(tempertureCanvasCtx, temperatureChartConfig)
+    const humidityChart = new Chart(humidityCanvasCtx, humidityChartConfig)
 
     const humidityChartConfig = {
         type: 'line',
