@@ -7,7 +7,7 @@ app.get('/temperature', function(req, res) {
 });
 
 app.get('/humidity', function(req, res) {
-    res.send('48 %);
+    res.send('48 %');
 });
 
 app.listen(3000, function() {
