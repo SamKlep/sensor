@@ -1,25 +1,24 @@
 const fetchTemperature = () => {
     fetch('/temperature')
     .then(results => {
-        return results.text()
+        return results.json()
     })
-    .then(text => {
+    .then(data => {
         const temperatureDisplay = 
         document.getElementById('temperature-display');
-        temperatureDisplay.innerHTML = text;
+        temperatureDisplay.innerHTML = '<strong>' + data.value + '</strong>';
     })
 }
 
 const fetchHumidity = () => {
-
     fetch('/humidity')
     .then(results => {
-        return results.text()
+        return results.json()
     })
-    .then(text => {
-        const temperatureDisplay = 
+    .then(data => {
+        const humidityDisplay = 
         document.getElementById('humidity-display');
-        temperatureDisplay.innerHTML = text;
+        humidityDisplay.innerHTML = '<strong>' + data.value + '</strong>';
     })
 }
 
