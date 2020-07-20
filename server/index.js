@@ -3,6 +3,8 @@ const path = require('path');
 const app = express();
 const getCachedSensorReadings = require('./getCachedSensorReadings');
 
+app.use('/public', express.static(path.join(__dirname, 'public')))
+
 app.get('/temperature', function(req, res) {
     res.send('<strong>' + getCachedSensorReadings.getTemperature().toFixed(1) + '</strong>' + '°C') 
     });
