@@ -105,5 +105,39 @@ setInterval(() => {
     fetchHumidity();
 }, 2000)
 
+const fetchTemperatureHistory = () => {
+    fetch('temperature/history')
+        .then(results => {
+            return results.json()
+        })
+        .then(data => {
+            data.forEach(reading => {
+                const time = new Date(reading.createdAt + 'Z')
+                const formattedTime = time.getHours() + ':' + time.getSeconds()
+                pushData(temperatureChartConfig.data.datasets[0].data, reading.value, 10)
+            })
+            temperatureChart.update()
+        })
+}
+
+fetchHumidityHistory()
+
+const fetchHumidityHistory = () => {
+    fetch('humidity/history')
+        .then(results => {
+            return results.json()
+        })
+        .then(data => {
+            data.forEach(reading => {
+                const time = new Date(reading.createdAt + 'Z')
+                const formattedTime = time.getHours() + ':' + time.getSeconds()
+                pushData(temperatureChartConfig.data.datasets[0].data, reading.value, 10)
+            })
+            humidityChart.update()
+        })
+}
+
+fetchHumidityHistory()
+
 
 

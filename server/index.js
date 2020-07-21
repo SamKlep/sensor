@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const getCachedSensorReadings = require('./getCachedSensorReadings');
+const databaseOperations = require('./databaseOperations');
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
@@ -18,6 +19,26 @@ app.get('/temperature', function(req, res) {
             getCachedSensorReadings.getHumidity().toFixed(1)
         }) 
         });
+
+app.get('temperature/history', function(req, res) {
+    databaseOperations.fetchLatestReading('temperature', 10, (err, results) => {
+        if (err) {
+        console.error(err)
+        return res.status(500).end()
+    }
+    res.json(results.reverse())
+})
+})
+
+app.get('humidity/history', function(req, res) {
+    databaseOperations.fetchLatestReading('humidity', 10, (err, results) => {
+        if (err) {
+        console.error(err)
+        return res.status(500).end()
+    }
+    res.json(results.reverse())
+})
+})
 
 app.listen(3000, function() {
     console.log('Server listening on port 3000');
