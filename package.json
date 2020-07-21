@@ -1,0 +1,28 @@
+{
+  "name": "sensor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "chartjs": "^0.3.24",
+    "colors": "^1.4.0",
+    "mongoose": "^5.9.25",
+    "path": "^0.12.7",
+    "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamKlep/sensor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamKlep/sensor/issues"
+  },
+  "homepage": "https://github.com/SamKlep/sensor#readme"
+}
