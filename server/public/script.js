@@ -120,7 +120,7 @@ const fetchTemperatureHistory = () => {
         })
 }
 
-fetchHumidityHistory()
+fetchTemperatureHistory()
 
 const fetchHumidityHistory = () => {
     fetch('humidity/history')
