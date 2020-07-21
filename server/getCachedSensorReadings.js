@@ -1,6 +1,6 @@
 const getSensorReadings = require('./getSensorReadings');
 
-// const databaseOperations = require('./databaseOperations');
+const databaseOperations = require('./databaseOperations');
 
 const cache = {
     temperature: null,
@@ -12,8 +12,8 @@ setInterval(() => {
         if(err) {
             return console.error(err)
         }
-        // databaseOperations.insertReading('dhtreadings', temperature)
-        // databaseOperations.insertReading('dhtreadings', humidity)
+        databaseOperations.insertReading('dhtreadings', temperature)
+        databaseOperations.insertReading('dhtreadings', humidity)
         cache.temperature = temperature;
         cache.humidity = humidity;
     })
