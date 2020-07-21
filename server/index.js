@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-// const getCachedSensorReadings = require('./getCachedSensorReadings');
+const getCachedSensorReadings = require('./getCachedSensorReadings');
 
 // const databaseOperations = require('./databaseOperations');
 
