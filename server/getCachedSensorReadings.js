@@ -12,8 +12,8 @@ setInterval(() => {
         if(err) {
             return console.error(err)
         }
-        databaseOperations.insertReading('temperature', temperature)
-        databaseOperations.insertReading('humidity', humidity)
+        // databaseOperations.insertReading('temperature', temperature)
+        // databaseOperations.insertReading('humidity', humidity)
         cache.temperature = temperature;
         cache.humidity = humidity;
     })
