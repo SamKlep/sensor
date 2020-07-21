@@ -92,7 +92,7 @@ const fetchHumidity = () => {
     })
     .then(data => {
         const now = new Date() 
-        const timeNow = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds()
+        const timeNow = (now.getHours() % 12 || 12) + ':' + now.getMinutes() + ':' + now.getSeconds()
         pushData(humidityChartConfig.data.labels, timeNow, 10)
         pushData(humidityChartConfig.data.datasets[0].data, data.value, 10)
         humidityChart.update()
