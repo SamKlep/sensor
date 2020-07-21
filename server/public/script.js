@@ -106,14 +106,15 @@ setInterval(() => {
 }, 2000)
 
 const fetchTemperatureHistory = () => {
-    fetch('temperature/history')
+    fetch('/temperature/history')
         .then(results => {
             return results.json()
         })
         .then(data => {
             data.forEach(reading => {
                 const time = new Date(reading.createdAt + 'Z')
-                const formattedTime = time.getHours() + ':' + time.getSeconds()
+                const formattedTime = time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds()
+                pushData(temperatureChartConfig.data.labels, formattedTime, 10)
                 pushData(temperatureChartConfig.data.datasets[0].data, reading.value, 10)
             })
             temperatureChart.update()
@@ -123,15 +124,16 @@ const fetchTemperatureHistory = () => {
 fetchTemperatureHistory()
 
 const fetchHumidityHistory = () => {
-    fetch('humidity/history')
+    fetch('/humidity/history')
         .then(results => {
             return results.json()
         })
         .then(data => {
             data.forEach(reading => {
                 const time = new Date(reading.createdAt + 'Z')
-                const formattedTime = time.getHours() + ':' + time.getSeconds()
-                pushData(temperatureChartConfig.data.datasets[0].data, reading.value, 10)
+                const formattedTime = time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds()
+                pushData(humidityChartConfig.data.labels, formattedTime, 10)
+                pushData(humidityChartConfig.data.datasets[0].data, reading.value, 10)
             })
             humidityChart.update()
         })
