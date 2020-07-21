@@ -5,14 +5,12 @@
   "main": "index.js",
   "dependencies": {
     "chartjs": "^0.3.24",
-    "colors": "^1.4.0",
-    "mongoose": "^5.9.25",
     "path": "^0.12.7",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
