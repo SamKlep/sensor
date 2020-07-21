@@ -81,7 +81,7 @@ const fetchTemperature = () => {
         pushData(temperatureChartConfig.data.labels, timeNow, 10)
         pushData(temperatureChartConfig.data.datasets[0].data, data.value, 10)
         temperatureChart.update()
-        temperatureDisplay.innerHTML = '<strong>' + data.value + '</strong>'
+        temperatureDisplay.innerHTML = '<strong>' + (data.value - 32)/1.8 + '</strong>'
     })
 }
 
