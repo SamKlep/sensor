@@ -74,30 +74,30 @@ const fetchTemperature = () => {
     fetch('/temperature')
         .then(results => {
             return results.json() 
-    })
-    .then(data => {
-        const now = new Date() 
-        const timeNow = (now.getHours() % 12 || 12) + ':' + now.getMinutes() + ':' + now.getSeconds()
-        pushData(temperatureChartConfig.data.labels, timeNow, 10)
-        pushData(temperatureChartConfig.data.datasets[0].data, data.value, 10)
-        temperatureChart.update()
-        temperatureDisplay.innerHTML = '<strong>' + ((data.value * 9/5) + 32) + '</strong>'
-    })
+        })
+        .then(data => {
+            const now = new Date() 
+            const timeNow = (now.getHours() % 12 || 12) + ':' + now.getMinutes() + ':' + now.getSeconds()
+            pushData(temperatureChartConfig.data.labels, timeNow, 10)
+            pushData(temperatureChartConfig.data.datasets[0].data, data.value, 10)
+            temperatureChart.update()
+            temperatureDisplay.innerHTML = '<strong>' + ((data.value * 9/5) + 32) + '</strong>'
+        })
 }
 
 const fetchHumidity = () => {
     fetch('/humidity')
         .then(results => {
             return results.json()
-    })
-    .then(data => {
-        const now = new Date() 
-        const timeNow = (now.getHours() % 12 || 12) + ':' + now.getMinutes() + ':' + now.getSeconds()
-        pushData(humidityChartConfig.data.labels, timeNow, 10)
-        pushData(humidityChartConfig.data.datasets[0].data, data.value, 10)
-        humidityChart.update()
-        humidityDisplay.innerHTML = '<strong>' + data.value + '</strong>'
-    })
+        })
+        .then(data => {
+            const now = new Date() 
+            const timeNow = (now.getHours() % 12 || 12) + ':' + now.getMinutes() + ':' + now.getSeconds()
+            pushData(humidityChartConfig.data.labels, timeNow, 10)
+            pushData(humidityChartConfig.data.datasets[0].data, data.value, 10)
+            humidityChart.update()
+            humidityDisplay.innerHTML = '<strong>' + data.value + '</strong>'
+        })
 }
 
 setInterval(() => {
