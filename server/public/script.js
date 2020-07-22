@@ -88,7 +88,7 @@ const fetchTemperature = () => {
 const fetchHumidity = () => {
     fetch('/humidity')
     .then(results => {
-        return results.json();
+        return results.json()
     })
     .then(data => {
         const now = new Date() 
@@ -108,7 +108,7 @@ setInterval(() => {
 const fetchTemperatureHistory = () => {
     fetch('/temperature/history')
         .then(results => {
-        return results.json();
+        return results.json()
         })
         .then(data => {
             data.forEach(reading => {
