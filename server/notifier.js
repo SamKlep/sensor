@@ -1,6 +1,6 @@
 const listeners = {
-    temperature = [],
-    humidity = []
+    temperature: [],
+    humidity: []
 }
 
 const subscribe = (listener, type) => {
@@ -11,7 +11,7 @@ const unsubscribe = (removedListener, type) => {
     listeners[type] = listeners[type].filter(listener => 
         listener !== removedListener)
     }
-    
+
 const notify = (value, type) => {
     listeners[type].forEach(listener => {
         listener(value)
