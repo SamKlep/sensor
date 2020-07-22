@@ -107,6 +107,7 @@ setInterval(() => {
 
 const fetchTemperatureHistory = () => {
     fetch('/temperature/history')
+    console.log(results);
         .then(results => {
         return results.json()
         })
