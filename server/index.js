@@ -9,6 +9,7 @@ const getCachedSensorReadings = require('./getCachedSensorReadings');
 
 const databaseOperations = require('./databaseOperations');
 
+const httpServer = http.Server(app)
 const io = socketIo(httpServer)
 
 io.on('connection', socket => {
