@@ -71,7 +71,7 @@ document.getElementById('humidity-chart').getContext('2d')
     document.getElementById('temperature-display')
 
 const fetchTemperature = () => {
-    fetch('/temperature')
+    fetch('/temperature/history')
     .then(results => {
         return results.json()
     })
@@ -86,7 +86,7 @@ const fetchTemperature = () => {
 }
 
 const fetchHumidity = () => {
-    fetch('/humidity')
+    fetch('/humidity/history')
     .then(results => {
         return results.json()
     })
