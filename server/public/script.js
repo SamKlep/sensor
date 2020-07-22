@@ -73,8 +73,7 @@ document.getElementById('temperature-display')
 const fetchTemperature = () => {
     fetch('/temperature')
         .then(results => {
-            console.log(results);
-             results.json()
+            return results.json()
             
     })
     .then(data => {
@@ -90,7 +89,7 @@ const fetchTemperature = () => {
 const fetchHumidity = () => {
     fetch('/humidity')
         .then(results => {
-             results.json()
+            return results.json()
     })
     .then(data => {
         const now = new Date() 
