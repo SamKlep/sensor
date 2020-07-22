@@ -71,13 +71,12 @@ document.getElementById('humidity-chart').getContext('2d')
     document.getElementById('temperature-display')
 
 const fetchTemperature = () => {
-    fetch('/temperature/history')
+    fetch('/temperature')
     .then(results => {
         return results.json()
     })
     .then(data => {
-        data.forEach(reading => {
-        const now = new Date(reading.createdAt + 'Z') 
+        const now = new Date() 
         const timeNow = (now.getHours() % 12 || 12) + ':' + now.getMinutes() + ':' + now.getSeconds()
         pushData(temperatureChartConfig.data.labels, timeNow, 10)
         pushData(temperatureChartConfig.data.datasets[0].data, data.value, 10)
@@ -87,7 +86,7 @@ const fetchTemperature = () => {
 }
 
 const fetchHumidity = () => {
-    fetch('/humidity/history')
+    fetch('/humidity')
     .then(results => {
         return results.json()
     })
