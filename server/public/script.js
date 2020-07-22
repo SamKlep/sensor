@@ -73,8 +73,8 @@ document.getElementById('temperature-display')
 const fetchTemperature = () => {
     fetch('/temperature')
     .then(results => {
-        console.log(results);
         return results.json()
+        console.log(results);
     })
     .then(data => {
         const now = new Date() 
