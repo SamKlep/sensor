@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 const getCachedSensorReadings = require('./getCachedSensorReadings');
 
-// const databaseOperations = require('./databaseOperations');
+const databaseOperations = require('./databaseOperations');
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
