@@ -1,9 +1,37 @@
+const http = require('http')
+const socketIo = require('socket.io')
+const { subscribe, unsubscribe } = require('./notifier')
+
 const express = require('express');
 const path = require('path');
 const app = express();
 const getCachedSensorReadings = require('./getCachedSensorReadings');
 
 const databaseOperations = require('./databaseOperations');
+
+const io = socketIo(httpServer)
+
+io.on('connection', socket => {
+    console.log(`User is connected [${socket.id}]`)
+    const pushTemperature = newTemperature => {
+        socket.emit('new-temperature', {
+            value: newTemperature
+        })
+    }
+    const pushHumidity = newHumidity => {
+        socket.emit('new-humidity', {
+            value: newHumidity
+        })
+    }
+    subscribe(pushTemperature, 'temperature')
+
+    subscribe(pushHumidity, 'humidity')
+
+    socket.on('disconnect', () => {
+        unsubscribe(pushTemperature, 'temperature')
+        unsubscribe(pushHumidity, 'humidity')
+    })
+})
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
@@ -88,6 +116,6 @@ app.get('/humidity/average', function ( req, res) {
     })
 })
 
-app.listen(3000, function() {
-    console.log('Server listening on port 3000');
-});
+httpServer.listen(3000, function() {
+    console.log('Server listening on port 3000!')
+})
