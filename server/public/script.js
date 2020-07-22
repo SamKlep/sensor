@@ -1,24 +1,4 @@
-const addSocketListeners = () => {
-    const socket = io()
-    socket.on('new-temperature', data => {
-        const now = new Date()
-        const timeNow = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds()
-        pushData(temperatureChartConfig.data.labels, timeNow, 10)
-        pushData(temperatureChartConfig.data.datasets[0].data, data.value, 10)
 
-        temperatureChart.update()
-        temperatureDisplay.innerHTML = '<strong>' + data.value + '</strong>'
-    })
-    socket.on('new-humidity', data => {
-        const now = new Date()
-        const timeNow = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds()
-        pushData(humidityChartConfig.data.labels, timeNow, 10)
-        pushData(humidityChartConfig.data.datasets[0].data, data.value, 10)
-
-        humidityChart.update()
-        humidityDisplay.innerHTML = '<strong>' + data.value + '</strong>'
-    })
-}
 
 const tempertureCanvasCtx =
 document.getElementById('temperature-chart').getContext('2d')
@@ -222,7 +202,27 @@ const fetchHumidityRange = () => {
             })
 }
 
+const addSocketListeners = () => {
+    const socket = io()
+    socket.on('new-temperature', data => {
+        const now = new Date()
+        const timeNow = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds()
+        pushData(temperatureChartConfig.data.labels, timeNow, 10)
+        pushData(temperatureChartConfig.data.datasets[0].data, data.value, 10)
 
+        temperatureChart.update()
+        temperatureDisplay.innerHTML = '<strong>' + data.value + '</strong>'
+    })
+    socket.on('new-humidity', data => {
+        const now = new Date()
+        const timeNow = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds()
+        pushData(humidityChartConfig.data.labels, timeNow, 10)
+        pushData(humidityChartConfig.data.datasets[0].data, data.value, 10)
+
+        humidityChart.update()
+        humidityDisplay.innerHTML = '<strong>' + data.value + '</strong>'
+    })
+}
 
 if(!getParameterByName('start') && ! getParameterByName('end')) {
     addSocketListeners()

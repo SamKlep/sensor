@@ -2,6 +2,9 @@ const http = require('http')
 const socketIo = require('socket.io')
 const { subscribe, unsubscribe } = require('./notifier')
 
+const httpServer = http.Server(app)
+const io = socketIo(httpServer)
+
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -9,8 +12,7 @@ const getCachedSensorReadings = require('./getCachedSensorReadings');
 
 const databaseOperations = require('./databaseOperations');
 
-const httpServer = http.Server(app)
-const io = socketIo(httpServer)
+
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
@@ -97,6 +99,7 @@ app.get('/humidity/average', function ( req, res) {
 
 io.on('connection', socket => {
     console.log(`User is connected [${socket.id}]`)
+    
     const pushTemperature = newTemperature => {
         socket.emit('new-temperature', {
             value: newTemperature

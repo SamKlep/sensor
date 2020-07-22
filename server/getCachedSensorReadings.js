@@ -2,7 +2,7 @@ const getSensorReadings = require('./getSensorReadings');
 
 const databaseOperations = require('./databaseOperations');
 
-const { notify } = require('./notifier.js');
+const { notify } = require('./notifier');
 
 const cache = {
     temperature: 0,
@@ -16,6 +16,7 @@ setInterval(() => {
         }
         databaseOperations.insertReading('temperature', temperature)
         databaseOperations.insertReading('humidity', humidity)
+        
         if(cache.temperature !== temperature) {
             notify(temperature, 'temperature')
         }
