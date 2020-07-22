@@ -10,16 +10,16 @@ app.use('/public', express.static(path.join(__dirname, 'public')))
 app.get('/temperature', function(req, res) {
     res.json({
         value: 
-        getCachedSensorReadings.getTemperature().toFixed(1)
+            getCachedSensorReadings.getTemperature().toFixed(1)
     }) 
-    });
+});
 
-    app.get('/humidity', function(req, res) {
-        res.json({
-            value: 
+app.get('/humidity', function(req, res) {
+    res.json({
+        value: 
             getCachedSensorReadings.getHumidity().toFixed(1)
         }) 
-        });
+    });
 
 app.get('/temperature/history', function(req, res) {
     databaseOperations.fetchLatestReadings('temperature', 10, (err, results) => {
@@ -28,7 +28,7 @@ app.get('/temperature/history', function(req, res) {
         return res.status(500).end()
     }
     res.json(results.reverse())
-})
+    })
 })
 
 app.get('/humidity/history', function(req, res) {
@@ -38,7 +38,7 @@ app.get('/humidity/history', function(req, res) {
         return res.status(500).end()
     }
     res.json(results.reverse())
-})
+    })
 })
 
 app.listen(3000, function() {
