@@ -31,44 +31,44 @@ const temperatureChartConfig = {
 const humidityCanvasCtx =
 document.getElementById('humidity-chart').getContext('2d')
 
-    const humidityChartConfig = {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [{
-                data: [],
-                backgroundColor: 'rgba(197, 202, 233, 0.5)'
-            }]
+const humidityChartConfig = {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            data: [],
+            backgroundColor: 'rgba(197, 202, 233, 0.5)'
+        }]
+    },
+    options: {
+        legend: {
+            display: false
         },
-        options: {
-            legend: {
-                display: false
-            },
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        suggestedMin: 30,
-                        suggestedMax: 90
-                    }
-                }]
-            }
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    suggestedMin: 30,
+                    suggestedMax: 90
+                }
+            }]
         }
     }
-    const humidityChart = new Chart(humidityCanvasCtx, humidityChartConfig)
+}
+const humidityChart = new Chart(humidityCanvasCtx, humidityChartConfig)
 
-    const pushData = (arr, value, maxLen) => {
-        arr.push(value)
-        if(arr.length > maxLen) {
-           arr.shift()
-        }
+const pushData = (arr, value, maxLen) => {
+    arr.push(value)
+    if(arr.length > maxLen) {
+        arr.shift()
     }
+}
 
-    const humidityDisplay =
-    document.getElementById('humidity-display')
-    const temperatureDisplay = 
-    document.getElementById('temperature-display')
+const humidityDisplay =
+document.getElementById('humidity-display')
+const temperatureDisplay = 
+document.getElementById('temperature-display')
 
 const fetchTemperature = () => {
     fetch('/temperature')
