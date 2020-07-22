@@ -73,6 +73,7 @@ document.getElementById('temperature-display')
 const fetchTemperature = () => {
     fetch('/temperature')
     .then(results => {
+        console.log(results);
         return results.json()
     })
     .then(data => {
@@ -107,7 +108,6 @@ setInterval(() => {
 
 const fetchTemperatureHistory = () => {
     fetch('/temperature/history')
-    console.log(results);
         .then(results => {
         return results.json()
         })
