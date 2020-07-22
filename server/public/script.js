@@ -72,8 +72,8 @@ document.getElementById('temperature-display')
 
 const fetchTemperature = () => {
     fetch('/temperature')
-        .then(results => {
-            return results.json()
+    .then(results => {
+        return results.json();
     })
     .then(data => {
         const now = new Date() 
@@ -87,8 +87,8 @@ const fetchTemperature = () => {
 
 const fetchHumidity = () => {
     fetch('/humidity')
-        .then(results => {
-            return results.json()
+    .then(results => {
+        return results.json();
     })
     .then(data => {
         const now = new Date() 
@@ -108,7 +108,7 @@ setInterval(() => {
 const fetchTemperatureHistory = () => {
     fetch('/temperature/history')
         .then(results => {
-            return results.json()
+        return results.json();
         })
         .then(data => {
             data.forEach(reading => {
@@ -126,7 +126,7 @@ fetchTemperatureHistory()
 const fetchHumidityHistory = () => {
     fetch('/humidity/history')
         .then(results => {
-            return results.json()
+        return results.json()
         })
         .then(data => {
             data.forEach(reading => {
