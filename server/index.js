@@ -2,8 +2,6 @@ const http = require('http')
 const socketIo = require('socket.io')
 const { subscribe, unsubscribe } = require('./notifier')
 
-
-
 const express = require('express');
 const path = require('path');
 const app = express();
