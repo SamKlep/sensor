@@ -26,7 +26,7 @@ const temperatureChartConfig = {
             }
         }
     }
-    const temperatureChart = new Chart(tempertureCanvasCtx, temperatureChartConfig)
+const temperatureChart = new Chart(tempertureCanvasCtx, temperatureChartConfig)
 
 const humidityCanvasCtx =
 document.getElementById('humidity-chart').getContext('2d')
